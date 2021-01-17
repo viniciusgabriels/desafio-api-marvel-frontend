@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css"/>
+    <title>Desafio API Marvel</title>
+</head>
+
+<body>
+    <div class="list">
+        <header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-1">
+                        <img class="logo" src="img/Marvel-Logo-Preto.png">
+                    </div>
+                    <div class="col-4 offset-3">
+                        <form>
+                            <input type="search" name="search" class="form-control search"
+                                placeholder="Digite sua Pesquisa aqui..." />
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+        </header>
+    </div>
+    <main>
+        <img class="bg-image" src="img/Marvel.jpg">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-10 offset-1">
+                    <div class="chars d-flex flex-wrap justify-content-start">
+
+                    </div>                
+                </div>            
+            </div>
+            <div class="row">
+                <div class="col-12">                
+                    <nav>
+                        <ul class="pagination"></ul>
+                      </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./bundle.js"></script>    
+</body>
+</html>
