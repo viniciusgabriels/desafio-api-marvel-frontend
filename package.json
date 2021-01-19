@@ -18,8 +18,7 @@
     "axios": "^0.21.1"
   },"scripts": {
     "dev": "webpack serve --mode=development",
-  "dev-build": "webpack --mode=development",
-  "build": "webpack --mode=production"
+    "dev-build": "webpack --mode=development",
+    "build": "webpack --mode=production"
   }
-
 }

@@ -6,7 +6,7 @@ const infoWindow = new InfoWindow();
 export default class App { 
     
     getCharacters() {            
-        axios.get("http://localhost:3030/characters")
+        axios.get("https://api-marvel-viniciusgabriels.herokuapp.com/characters")
         .then(response => {
             this.populate(response.data.data.results);
             this.setLinkInfoChar(response.data.data.results);
