@@ -17,6 +17,10 @@ header {
     background-color: rgb(0, 0, 0);
 }
 
+.border-danger {    
+    border-color:  rgb(172,0,1) !important;
+}
+
 .char-image:hover {
     cursor: pointer;
 }
@@ -24,18 +28,57 @@ header {
 .info-char {
     position: fixed;
     left: 10%;
-    top: 100px;
+    top: 90px;
     width: 80%;
-    height: 80%;
+    height: 85%;
     background-color: rgb(40, 40, 40);
     color: aliceblue;
+    overflow: auto;
 }
 
-.description, .structure {
-    display: flex;
-    flex-direction: column;
+element.scroll {
+    top: 100;
+    left: 100;
+    behavior: 'smooth';
+}
+
+.structure {
+    padding-top: 10px;
 }
 
 .x-button {
     align-self: flex-end;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: rgb(172,0,1);
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(172,0,1);
+}
+
+.page-link:hover {
+    color: rgb(172,0,1);
+    text-decoration: none;
+    background-color: rgb(0, 0, 0, 0.5);
+    border-color: rgb(172,0,1);
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: rgb(0, 0, 0) !important;
+    background-color: rgb(172,0,1) !important;
+    border-color: rgb(172,0,1) !important;
+}
+
+.hqs li, .hqs li img, .hqs li span {
+    width: 100px;
+}
+
+.hqs li span {
+    display: block;
 }

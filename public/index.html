@@ -17,10 +17,8 @@
                         <img class="logo" src="img/Marvel-Logo-Preto.png">
                     </div>
                     <div class="col-4 offset-3">
-                        <form>
-                            <input type="search" name="search" class="form-control search"
-                                placeholder="Digite sua Pesquisa aqui..." />
-                        </form>
+                        <input type="search" name="search" class="form-control search"
+                            placeholder="Digite sua Pesquisa aqui..." />
                     </div>                    
                 </div>
             </div>
@@ -36,47 +34,41 @@
                 </div>            
             </div>
             <div class="row">
-                <div class="col-12">                
+                <div class="col-6 offset-3 mt-3">                
                     <nav>
                         <ul class="pagination"></ul>
-                      </nav>
+                    </nav>
                 </div>
             </div>
         </div>
 
-        <div class="info-char d-none">
-            <div class="structure">                
-                <img class="photo" src="img/Marvel-Logo-Red.jpg" width="200" height="300">                
-                <img class="x-button" src="img/X-button3.png" width="30" height="30">
-                <div class="description">                    
-                    <h1>Nome</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore distinctio eos cum debitis cupiditate iure corrupti dolore repellendus, odit ipsum ducimus rem quasi consectetur repellat fugit, similique culpa reiciendis! Voluptates.</p>
-                </div>
-                <div class="hqs">
-                    <h2>HQs (Comics)</h2>                    
-                    <div>
-                        <div>
-                            <img class="hq" src="img/Marvel-Logo-Red.jpg" width="50" height="100">
-                            <p>Título da HQ</p>
+        <div class="info-char container-fluid d-none">
+            <div class="row structure">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-4 d-flex justify-content-center">
+                            <img class="photo" src="img/Marvel-Logo-Red.jpg" height="250" max-width="250">
                         </div>
-                        <div>
-                            <img class="hq" src="img/Marvel-Logo-Red.jpg" width="50" height="100">
-                            <p>Título da HQ</p>
+                        <div class="col-8">
+                            <div class="d-flex flex-row-reverse">
+                                <img class="x-button" src="img/X-button3.png" width="40" height="40">
+                            </div>
+                            <div class="description">                    
+                                <h1>Nome</h1>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates.</p>
+                            </div>
                         </div>
-                        <div>
-                            <img class="hq" src="img/Marvel-Logo-Red.jpg" width="50" height="100">
-                            <p>Título da HQ</p>
-                        </div>
-                        <div>
-                            <img class="hq" src="img/Marvel-Logo-Red.jpg" width="50" height="100">
-                            <p>Título da HQ</p>
-                        </div>                        
                     </div>
                 </div>
-                
-
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2>HQs (Comics)</h2>                    
+                    <ul class="list-inline hqs"></ul>
+                </div>
+            </div> 
         </div>
+
     </main>
 
     <script src="./bundle.js"></script>    

@@ -4,23 +4,39 @@ import InfoWindow from "./infoWindow";
 const infoWindow = new InfoWindow();
 
 export default class App { 
-    
-    getCharacters() {            
-        axios.get("https://api-marvel-viniciusgabriels.herokuapp.com/characters")
-        .then(response => {
-            this.populate(response.data.data.results);
-            this.setLinkInfoChar(response.data.data.results);
-            this.setPagination(response.data.data.total);
-        })
-        .catch(error => console.log(error));
+    constructor() {
+        this.baseUrl = "http://localhost:1234";
+        //this.baseUrl = "https://api-marvel-growdev.herokuapp.com";
+        //this.baseUrl = "https://api-marvel-viniciusgabriels.herokuapp.com"
+        this.paginationReset = false;
     }
+
+    getCharacters(page = 1, title = null) {  
+        let url = `${this.baseUrl}/characters?page=${page}`; 
+        this.paginationReset = false; 
+        
+        if (title !== null) {
+            url += `&title=${title}`;
+            this.paginationReset = true;
+        }
+        
+         axios.get(url)
+            .then(response => {
+                const { data, current_page, total_pages } = response.data;
+                
+                this.populate(data);
+                this.setLinkInfoChar(data);
+                this.setPagination(current_page, total_pages, this.paginationReset);
+            })
+            .catch(error => console.log(error));
+    }    
     
     populate(data) {    
         document.querySelector('.chars').innerHTML = ''; 
     
         data.forEach(item => {
             const char = `<div d-flex><img width="100" height="100" alt="${item.name}" title="${item.name}" 
-                        src="${this.noImage(item)}.${item.thumbnail.extension}" id="${item.id}" 
+                        src="${this.noImage(item)}.${item.thumbnail.extension}" id="${item.id}" data-id="${item.id}" 
                         class="char-image border border-danger border-radius"></div>`;
                         
             document.querySelector('.chars').innerHTML += char;            
@@ -41,29 +57,48 @@ export default class App {
             link.addEventListener('click', (event) => {
                 event.preventDefault();
 
-                infoWindow.openInfo(data, item.id);
+                infoWindow.openInfo(item, `${this.noImage(item)}.${item.thumbnail.extension}`);
             });            
         });         
     }
     
-    /* setPagination(totalItems) {
-        const pages = Math.ceil(totalItems / 100);
-    
-        document.querySelector('.pagination').innerHTML = '';
-    
-        for (let i = 1; i <= pages; i++) {
-            const li = `<li class="page-item"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
-            document.querySelector('.pagination').innerHTML += li;
+    setPagination(current_page, total_pages, reset) {
+        if (reset) {
+            document.getElementsByClassName('pagination')[0].innerHTML = '';
+        }
+
+        if (!document.querySelectorAll('.pagination li').length) {
         
-            for (let link of document.getElementsByClassName('page-link')) {
-                link.addEventListener('click', (event) => {
+            for (let i = 1; i <= total_pages; i++) {
+                const link = `<li class="page-item border border-danger"><a class="page-link rounded-0" href="#" data-page="${i}">${i}</a></li>`;
+                document.getElementsByClassName('pagination')[0].innerHTML += link;
+            
+            }
+
+            for (let btn of document.getElementsByClassName('page-link')) {
+                btn.addEventListener('click', (event) => {
                     event.preventDefault();
     
-                    const page = event.target.dataset.page;
-                    this.offset = (page -1) * 100;
-                    this.getCharacters();
+                    const page = parseInt(event.target.dataset.page);
+                    this.getCharacters(page);
                 });
             }
         }
-    } */    
+        
+        for (let pageItem of document.querySelectorAll('.page-item')) {
+            pageItem.classList.remove('active');
+        }
+        document.querySelector(`.page-link[data-page="${current_page}"]`).parentNode.classList.add('active');
+    }    
+
+    setFilter() {
+        document.getElementsByName('search')[0].addEventListener('keyup', (event) =>{
+            
+            const title = event.target.value.trim();
+            
+            if (title.length >= 3) {
+                this.getCharacters(1, title);
+            }
+        });
+    }
 }
