@@ -53,7 +53,7 @@ export default class InfoWindow {
         }
 
         const li = `<li class="list-inline-item">
-                        <img class="hq" width="100" alt="${title}" title="${title}"
+                        <img class="hq" width="100" alt="${comic.title}" title="${comic.title}"
                         src="${comic.images[0].path}.${comic.images[0].extension}">
                         <span class="text-center">${title}</span>
                     </li>`;
