@@ -2,8 +2,7 @@ import axios from 'axios';
 
 export default class InfoWindow {
     constructor() {
-        //this.baseUrl = "http://localhost:1234";
-        //this.baseUrl = "https://api-marvel-growdev.herokuapp.com";
+        //this.baseUrl = "http://localhost:3030";
         this.baseUrl = "https://api-marvel-viniciusgabriels.herokuapp.com";
         this.data = '';
         this.id = '';
@@ -23,6 +22,7 @@ export default class InfoWindow {
         document.querySelector('.hqs').innerHTML = '';
 
         document.getElementsByClassName('info-char')[0].classList.remove('d-none');
+        document.getElementsByClassName('pagination')[0].classList.add('d-none');
 
         document.querySelector('.photo').src = img;
         document.querySelector('.description h1').innerHTML = char.name;
@@ -41,6 +41,7 @@ export default class InfoWindow {
                 event.preventDefault();
 
                 document.getElementsByClassName('info-char')[0].classList.add('d-none');
+                document.getElementsByClassName('pagination')[0].classList.remove('d-none');
             });
     }
 
@@ -52,7 +53,8 @@ export default class InfoWindow {
         }
 
         const li = `<li class="list-inline-item">
-                        <img class="hq" width="100" src="${comic.images[0].path}.${comic.images[0].extension}">
+                        <img class="hq" width="100" alt="${title}" title="${title}"
+                        src="${comic.images[0].path}.${comic.images[0].extension}">
                         <span class="text-center">${title}</span>
                     </li>`;
 

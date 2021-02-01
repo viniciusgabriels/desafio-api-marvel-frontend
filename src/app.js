@@ -5,8 +5,7 @@ const infoWindow = new InfoWindow();
 
 export default class App { 
     constructor() {
-        //this.baseUrl = "http://localhost:1234";
-        //this.baseUrl = "https://api-marvel-growdev.herokuapp.com";
+        //this.baseUrl = "http://localhost:3030";
         this.baseUrl = "https://api-marvel-viniciusgabriels.herokuapp.com";
         this.paginationReset = false;
     }
